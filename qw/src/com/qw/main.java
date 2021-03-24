@@ -4,15 +4,27 @@ import java.util.Arrays;
 
 public class main {
     public static void main(String[] args) {
-        int[] arr = new int[10];
-        int count = arr.length;
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) Math.round(Math.random() * 10);
-        }
-        System.out.println(Arrays.toString(arr));
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i-1]==arr[i]) count--;
-        }
-        System.out.println(count);
+        int[] array = {1, 1, 1, 2, 2, 3, 3, 4, 1};
+        System.out.println(Arrays.toString(array));
+
+        int count = countWithoutdup(array);
+        System.out.println("Count numbers: " + count);
     }
+
+    static int countWithoutdup(int[] array) {
+        int numbers = 0;
+        for (int i = 0; i < array.length; i++) {
+            int count = 0;
+            for (int j = 0; j < i; j++) {
+                if (array[j] == array[i]) {
+                    count++;
+                }
+            }
+            if (count == 0) {
+                numbers++;
+            }
+        }
+        return numbers;
+    }
+
 }
